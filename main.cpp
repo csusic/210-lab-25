@@ -2,7 +2,8 @@
 
 #include <iostream>
 #include <chrono>
-
+#include <algorithm>
+#include <fstream>
 #include <vector>
 #include <list>
 #include <set>
@@ -12,7 +13,7 @@ const int SZ = 20000;  //size of array from file
 
 int main() {
     //output
-    cout << "Operation   Vector   List   Set";
+    cout << "Operation   Vector   List   Set" << endl;
     
     //vector of codes
     vector<string> vectorCodes;
@@ -22,7 +23,7 @@ int main() {
     set<string> setCodes;
     
     //READ DATA
-    cout << "Read";
+    cout << "Read" << endl;
     //read names file and store it in a vector, list, and set
     ifstream fin("codes.txt");
     string codes;
@@ -31,33 +32,36 @@ int main() {
         //read data into vector
         vectorCodes.push_back(codes);
         //read data into list
-        //listCodes.push_back(codes);
+        listCodes.push_back(codes);
         //read data into set
-        //setCodes.insert(codes);
+        setCodes.insert(codes);
         count++;
     }
     fin.close();
  
     //SORT DATA
-    cout << "Sort";
+    cout << "Sort" << endl;
     //sort data into vector
-    
+    sort(vectorCodes.begin(), vectorCodes.end());
     //sort data into list
-    
+    listCodes.sort();
     //sort data into set
-    
+    setCodes.clear();
+    //setCodes.insert(-1);
     
     //INSERT DATA
-    cout << "Insert";
+    cout << "Insert" << endl;
     //insert data into vector
-    
+    vectorCodes.insert(vectorCodes.begin() + vectorCodes.size() / 2, "TESTCODE");
     //insert data into list
-    
+    auto it = listCodes.begin();
+    advance(it, listCodes.size() / 2);
+    listCodes.insert(it, "TESTCODE");
     //insert data into set
-    
+    setCodes.insert("TESTCODE");
     
     //DELETE DATA
-    cout << "Delete";
+    cout << "Delete" << endl;
     //delete data from vector
     
     //delete data from list

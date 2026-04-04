@@ -8,6 +8,7 @@
 #include <list>
 #include <set>
 using namespace std;
+using namespace std:: chrono;
 
 const int SZ = 20000;  //size of array from file
 
@@ -46,8 +47,7 @@ int main() {
     //sort data into list
     listCodes.sort();
     //sort data into set
-    setCodes.clear();
-    //setCodes.insert(-1);
+    int setSorted = -1;
     
     //INSERT DATA
     cout << "Insert" << endl;
@@ -63,11 +63,14 @@ int main() {
     //DELETE DATA
     cout << "Delete" << endl;
     //delete data from vector
-    
+    vectorCodes.erase(vectorCodes.begin() + vectorCodes.size() / 2);
     //delete data from list
-    
+    advance(it, listCodes.size() / 2);
+    listCodes.erase(it);
     //delete data from set
-    
+    auto it1 = setCodes.begin();
+    advance(it1, setCodes.size() / 2);
+    setCodes.erase(it1);
 
     return 0;
 }

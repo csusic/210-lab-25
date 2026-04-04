@@ -5,6 +5,32 @@
 using namespace std;
 
 int main() {
+    //output
+    cout << "Operation   Vector   List   Set";
+    
+    //read data
+    cout << "Read";
+    //read data into vector
+    //read data into list
+    //read data into set
+    
+    //sort data
+    cout << "Sort";
+    //sort data into vector
+    //sort data into list
+    //sort data into set
+    
+    //insert data
+    cout << "Insert";
+    //insert data into vector
+    //insert data into
+    //insert data into
+    
+    //delete data
+    cout << "Delete";
+    //delete data from vector
+    //delete data from
+    //delete data from
     
 
     return 0;

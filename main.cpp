@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <chrono>
+
+#include <vector>
 #include <list>
 #include <set>
 using namespace std;
@@ -12,26 +14,30 @@ int main() {
     //output
     cout << "Operation   Vector   List   Set";
     
+    //vector of codes
+    vector<string> vectorCodes;
+    //list of codes
+    list<string> listCodes;
+    //set of codes
+    set<string> setCodes;
+    
     //READ DATA
     cout << "Read";
-    // first read names file and store in an array
+    //read names file and store it in a vector, list, and set
     ifstream fin("codes.txt");
-    string codes[SZ];
-    int i = 0;
-    while (fin >> codes[i++]);
+    string codes;
+    int count = 0;
+    while (getline(fin, codes)) {
+        //read data into vector
+        vectorCodes.push_back(codes);
+        //read data into list
+        //listCodes.push_back(codes);
+        //read data into set
+        //setCodes.insert(codes);
+        count++;
+    }
     fin.close();
-    
-     //read data into vector
-
-    //read data into list
-    //list of codes
-    list<string> codes;
-    
-    //read data into set
-    //set of codes
-    set<string> codes;
-    
-    
+ 
     //SORT DATA
     cout << "Sort";
     //sort data into vector

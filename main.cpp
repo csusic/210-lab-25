@@ -15,7 +15,7 @@ using namespace std:: chrono;
 const int SZ = 20000, W1 = 10;  
 
 int main() {
-    //output
+    //output headers
     cout << setw(W1) << right << "Operation";
     cout << setw(W1) << "Vector";
     cout << setw(W1) << "List";
@@ -28,9 +28,9 @@ int main() {
     //set of codes
     set<string> setCodes;
     
-    //READ DATA
-    cout << setw(W1) << "Read";
-    //read names file and store it in a vector, list, and set
+    /* READ DATA */
+    cout << setw(W1) << "Read"; //header
+    //read codes file into vector, list, and set
     ifstream fin("codes.txt");
     string codes;
     int count = 0;
@@ -86,8 +86,8 @@ int main() {
     fin.close(); //close file
     cout << endl;
  
-    //SORT DATA
-    cout << setw(W1) << "Sort";
+    /* SORT DATA */
+    cout << setw(W1) << "Sort"; //header
     
     //Sort Vector
     //start timing
@@ -126,8 +126,8 @@ int main() {
     cout << setw(W1) << durationSortSet.count();
     cout << endl;
     
-    //INSERT DATA
-    cout << setw(W1) << "Insert";
+    /* INSERT DATA */
+    cout << setw(W1) << "Insert"; //header
     
     //Insert Vector
     //start timing
@@ -168,8 +168,8 @@ int main() {
     cout << setw(W1) << durationInsertSet.count();
     cout << endl;
 
-    //DELETE DATA
-    cout << setw(W1) << "Delete";
+    /* DELETE DATA */ 
+    cout << setw(W1) << "Delete"; //header
     
     //Delete Vector
     //start timing

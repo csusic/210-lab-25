@@ -12,14 +12,14 @@ using namespace std;
 using namespace std:: chrono;
 
 //size of array from file and column widths
-const int SZ = 20000, W1 = 11, W2 = 9, W3 = 10, W4 = 8;  
+const int SZ = 20000, W1 = 10;  
 
 int main() {
     //output
     cout << setw(W1) << right << "Operation";
-    cout << setw(W2) << "Vector";
-    cout << setw(W3) << "List";
-    cout << setw(W4) << "Set" << endl;
+    cout << setw(W1) << "Vector";
+    cout << setw(W1) << "List";
+    cout << setw(W1) << "Set" << endl;
     
     //vector of codes
     vector<string> vectorCodes;
@@ -48,7 +48,7 @@ int main() {
      //calculate duration
     auto durationReadVector = duration_cast<nanoseconds>(endReadVector - startReadVector);
     //output the duration in nanoseconds
-    cout << setw(W2) << durationReadVector.count();
+    cout << setw(W1) << durationReadVector.count();
     
     //Read List
     fin.clear(); //clears error
@@ -65,7 +65,7 @@ int main() {
      //calculate duration
     auto durationReadList = duration_cast<nanoseconds>(endReadList - startReadList);
     //output the duration in nanoseconds
-    cout << setw(W2) << durationReadList.count();
+    cout << setw(W1) << durationReadList.count();
     
     //Read Set
     fin.clear(); //clears error
@@ -80,9 +80,9 @@ int main() {
     //end timing
     auto endReadSet = high_resolution_clock::now();
      //calculate duration
-    auto durationVectorSort = duration_cast<nanoseconds>(endVectorSort - startVectorSort);
+    auto durationReadSet = duration_cast<nanoseconds>(endReadSet - startReadSet);
     //output the duration in nanoseconds
-    cout << setw(W2) << durationVectorSort.count();
+    cout << setw(W1) << durationReadSet.count();
     fin.close(); //close file
     cout << endl;
  
@@ -99,7 +99,7 @@ int main() {
      //calculate duration
     auto durationSortVector = duration_cast<nanoseconds>(endSortVector - startSortVector);
     //output the duration in nanoseconds
-    cout << setw(W2) << durationSortVector.count();
+    cout << setw(W1) << durationSortVector.count();
     
     //Sort List
     //start timing
@@ -111,7 +111,7 @@ int main() {
      //calculate duration
     auto durationSortList = duration_cast<nanoseconds>(endSortList - startSortList);
     //output the duration in nanoseconds
-    cout << setw(W3) << durationSortList.count();
+    cout << setw(W1) << durationSortList.count();
     
     //Sort Set
     //start timing
@@ -123,7 +123,7 @@ int main() {
      //calculate duration
     auto durationSortSet = duration_cast<nanoseconds>(endSortSet - startSortSet);
     //output the duration in nanoseconds
-    cout << setw(W4) << durationSortSet.count();
+    cout << setw(W1) << durationSortSet.count();
     cout << endl;
     
     //INSERT DATA
@@ -139,21 +139,21 @@ int main() {
      //calculate duration
     auto durationInsertVector = duration_cast<nanoseconds>(endInsertVector - startInsertVector);
     //output the duration in nanoseconds
-    cout << setw(W2) << durationInsertVector.count();
+    cout << setw(W1) << durationInsertVector.count();
     
     //Insert List
     //start timing
     auto startInsertList = high_resolution_clock::now();
     //insert data into list
-    auto it = listCodes.begin();
-    advance(it, listCodes.size() / 2);
-    listCodes.insert(it, "TESTCODE");
+    auto itI = listCodes.begin();
+    advance(itI, listCodes.size() / 2);
+    listCodes.insert(itI, "TESTCODE");
     //end timing
     auto endInsertList = high_resolution_clock::now();
      //calculate duration
     auto durationInsertList = duration_cast<nanoseconds>(endInsertList - startInsertList);
     //output the duration in nanoseconds
-    cout << setw(W3) << durationInsertList.count();
+    cout << setw(W1) << durationInsertList.count();
     
     //Insert Set
     //start timing
@@ -165,11 +165,11 @@ int main() {
      //calculate duration
     auto durationInsertSet = duration_cast<nanoseconds>(endInsertSet - startInsertSet);
     //output the duration in nanoseconds
-    cout << setw(W4) << durationInsertSet.count();
+    cout << setw(W1) << durationInsertSet.count();
     cout << endl;
 
     //DELETE DATA
-    cout << "Delete";
+    cout << setw(W1) << "Delete";
     
     //Delete Vector
     //start timing
@@ -181,26 +181,35 @@ int main() {
      //calculate duration
     auto durationDeleteVector = duration_cast<nanoseconds>(endDeleteVector - startDeleteVector);
     //output the duration in nanoseconds
-    cout << setw(W4) << durationDeleteVector.count();
+    cout << setw(W1) << durationDeleteVector.count();
     
     //Delete List
+    //start timing
+    auto startDeleteList = high_resolution_clock::now();
     //delete data from list
-    advance(it, listCodes.size() / 2);
-    listCodes.erase(it);
+    auto itDL = listCodes.begin();
+    advance(itDL, listCodes.size() / 2);
+    listCodes.erase(itDL);
+    //end timing
+    auto endDeleteList = high_resolution_clock::now();
+     //calculate duration
+    auto durationDeleteList = duration_cast<nanoseconds>(endDeleteList - startDeleteList);
+    //output the duration in nanoseconds
+    cout << setw(W1) << durationDeleteList.count();
     
     //Delete Set
+    //start timing
+    auto startDeleteSet = high_resolution_clock::now();
     //delete data from set
-    auto it1 = setCodes.begin();
-    advance(it1, setCodes.size() / 2);
-    setCodes.erase(it1);
-    cout << endl;
+    auto itDS = setCodes.begin();
+    advance(itDS, setCodes.size() / 2);
+    setCodes.erase(itDS);
+    //end timing
+    auto endDeleteSet = high_resolution_clock::now();
+     //calculate duration
+    auto durationDeleteSet = duration_cast<nanoseconds>(endDeleteSet - startDeleteSet);
+    //output the duration in nanoseconds
+    cout << setw(W1) << durationDeleteSet.count();
 
     return 0;
 }
-
-/* syntax examples:
-auto start = high_resolution_clock::now()
-auto end = high_resolution_clock::now()
-auto duration = duration_cast<milliseconds>(end - start)
-duration.count() references elapsed milliseconds
-*/

@@ -14,7 +14,7 @@ const int SZ = 20000;  //size of array from file
 
 int main() {
     //output
-    cout << "Operation   Vector   List   Set" << endl;
+    cout << "Operation   Vector   List   Set" << end
     
     //vector of codes
     vector<string> vectorCodes;

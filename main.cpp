@@ -6,13 +6,14 @@
 #include <algorithm>
 #include <fstream>
 #include <vector>
+#include <string>
 #include <list>
 #include <set>
 using namespace std;
 using namespace std:: chrono;
 
-//size of array from file and column widths
-const int SZ = 20000, W1 = 10;  
+//column width
+const int W1 = 10; 
 
 int main() {
     //output headers
@@ -114,22 +115,15 @@ int main() {
     cout << setw(W1) << durationSortList.count();
     
     //Sort Set
-    //start timing
-    auto startSortSet = high_resolution_clock::now();
-    //sort data into set
+    //set already sorted, set value to -1
     int sortedSet = -1;
-    //end timing
-    auto endSortSet = high_resolution_clock::now();
-     //calculate duration
-    auto durationSortSet = duration_cast<nanoseconds>(endSortSet - startSortSet);
-    //output the duration in nanoseconds
-    cout << setw(W1) << durationSortSet.count();
+    cout << setw(W1) << sortedSet;
     cout << endl;
     
-    /* INSERT DATA */
+    /* INSERT DATA */ //middle element
     cout << setw(W1) << "Insert"; //header
     
-    //Insert Vector
+    //Insert Vector (middle element)
     //start timing
     auto startInsertVector = high_resolution_clock::now();
     //insert data into vector
@@ -141,13 +135,13 @@ int main() {
     //output the duration in nanoseconds
     cout << setw(W1) << durationInsertVector.count();
     
-    //Insert List
+    //Insert List (middle element)
     //start timing
     auto startInsertList = high_resolution_clock::now();
     //insert data into list
-    auto itI = listCodes.begin();
-    advance(itI, listCodes.size() / 2);
-    listCodes.insert(itI, "TESTCODE");
+    auto itIL = listCodes.begin();
+    advance(itIL, listCodes.size() / 2);
+    listCodes.insert(itIL, "TESTCODE");
     //end timing
     auto endInsertList = high_resolution_clock::now();
      //calculate duration
@@ -155,7 +149,7 @@ int main() {
     //output the duration in nanoseconds
     cout << setw(W1) << durationInsertList.count();
     
-    //Insert Set
+    //Insert Set (middle element)
     //start timing
     auto startInsertSet = high_resolution_clock::now();
     //insert data into set
@@ -168,10 +162,10 @@ int main() {
     cout << setw(W1) << durationInsertSet.count();
     cout << endl;
 
-    /* DELETE DATA */ 
+    /* DELETE DATA */ //The middle element
     cout << setw(W1) << "Delete"; //header
     
-    //Delete Vector
+    //Delete Vector (middle element)
     //start timing
     auto startDeleteVector = high_resolution_clock::now();
     //delete data from vector
@@ -183,7 +177,7 @@ int main() {
     //output the duration in nanoseconds
     cout << setw(W1) << durationDeleteVector.count();
     
-    //Delete List
+    //Delete List (middle element)
     //start timing
     auto startDeleteList = high_resolution_clock::now();
     //delete data from list
@@ -197,7 +191,7 @@ int main() {
     //output the duration in nanoseconds
     cout << setw(W1) << durationDeleteList.count();
     
-    //Delete Set
+    //Delete Set (middle element)
     //start timing
     auto startDeleteSet = high_resolution_clock::now();
     //delete data from set

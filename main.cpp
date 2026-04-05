@@ -34,29 +34,56 @@ int main() {
     ifstream fin("codes.txt");
     string codes;
     int count = 0;
+
+    //Read Vector
+    //start timing
+    auto startReadVector = high_resolution_clock::now();
+    //read data into vector
     while (getline(fin, codes)) {
-        //Read Vector
-        //read data into vector
         vectorCodes.push_back(codes);
         count++;
     }
+    //end timing
+    auto endReadVector = high_resolution_clock::now();
+     //calculate duration
+    auto durationReadVector = duration_cast<nanoseconds>(endReadVector - startReadVector);
+    //output the duration in nanoseconds
+    cout << setw(W2) << durationReadVector.count();
+    
+    //Read List
     fin.clear(); //clears error
     fin.seekg(0, ios::beg); //moves pointer to beg. of file
+    //start timing
+    auto startReadList = high_resolution_clock::now();
+    //read data into list
     while (getline(fin, codes)) {
-        //Read List
-        //read data into list
         listCodes.push_back(codes);
         count++;
     }
+    //end timing
+    auto endReadList = high_resolution_clock::now();
+     //calculate duration
+    auto durationReadList = duration_cast<nanoseconds>(endReadList - startReadList);
+    //output the duration in nanoseconds
+    cout << setw(W2) << durationReadList.count();
+    
+    //Read Set
     fin.clear(); //clears error
     fin.seekg(0, ios::beg); //moves pointer to beg. of file
+    //start timing
+    auto startReadSet = high_resolution_clock::now();
+    //read data into set
     while (getline(fin, codes)) {
-        //Read Set
-        //read data into set
         setCodes.insert(codes);
         count++;
     }
-    fin.close();
+    //end timing
+    auto endReadSet = high_resolution_clock::now();
+     //calculate duration
+    auto durationVectorSort = duration_cast<nanoseconds>(endVectorSort - startVectorSort);
+    //output the duration in nanoseconds
+    cout << setw(W2) << durationVectorSort.count();
+    fin.close(); //close file
     cout << endl;
  
     //SORT DATA
@@ -64,39 +91,39 @@ int main() {
     
     //Sort Vector
     //start timing
-    auto startVectorSort = high_resolution_clock::now();
+    auto startSortVector = high_resolution_clock::now();
     //sort data into vector
     sort(vectorCodes.begin(), vectorCodes.end());
     //end timing
-    auto endVectorSort = high_resolution_clock::now();
+    auto endSortVector = high_resolution_clock::now();
      //calculate duration
-    auto durationVectorSort = duration_cast<nanoseconds>(endVectorSort - startVectorSort);
+    auto durationSortVector = duration_cast<nanoseconds>(endSortVector - startSortVector);
     //output the duration in nanoseconds
-    cout << setw(W2) << durationVectorSort.count();
+    cout << setw(W2) << durationSortVector.count();
     
     //Sort List
     //start timing
-    auto startListSort = high_resolution_clock::now();
+    auto startSortList = high_resolution_clock::now();
     //sort data into list
     listCodes.sort();
     //end timing
-    auto endListSort = high_resolution_clock::now();
+    auto endSortList = high_resolution_clock::now();
      //calculate duration
-    auto durationListSort = duration_cast<nanoseconds>(endListSort - startListSort);
+    auto durationSortList = duration_cast<nanoseconds>(endSortList - startSortList);
     //output the duration in nanoseconds
-    cout << setw(W3) << durationListSort.count();
+    cout << setw(W3) << durationSortList.count();
     
     //Sort Set
     //start timing
-    auto startSetSort = high_resolution_clock::now();
+    auto startSortSet = high_resolution_clock::now();
     //sort data into set
-    int setSorted = -1;
+    int sortedSet = -1;
     //end timing
-    auto endSetSort = high_resolution_clock::now();
+    auto endSortSet = high_resolution_clock::now();
      //calculate duration
-    auto durationSetSort = duration_cast<nanoseconds>(endSetSort - startSetSort);
+    auto durationSortSet = duration_cast<nanoseconds>(endSortSet - startSortSet);
     //output the duration in nanoseconds
-    cout << setw(W4) << durationSetSort.count();
+    cout << setw(W4) << durationSortSet.count();
     cout << endl;
     
     //INSERT DATA

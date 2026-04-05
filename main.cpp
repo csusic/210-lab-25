@@ -35,10 +35,23 @@ int main() {
     string codes;
     int count = 0;
     while (getline(fin, codes)) {
+        //Read Vector
         //read data into vector
         vectorCodes.push_back(codes);
+        count++;
+    }
+    fin.clear(); //clears error
+    fin.seekg(0, ios::beg); //moves pointer to beg. of file
+    while (getline(fin, codes)) {
+        //Read List
         //read data into list
         listCodes.push_back(codes);
+        count++;
+    }
+    fin.clear(); //clears error
+    fin.seekg(0, ios::beg); //moves pointer to beg. of file
+    while (getline(fin, codes)) {
+        //Read Set
         //read data into set
         setCodes.insert(codes);
         count++;
@@ -61,7 +74,7 @@ int main() {
     //output the duration in nanoseconds
     cout << setw(W2) << durationVectorSort.count();
     
-    //List Sort
+    //Sort List
     //start timing
     auto startListSort = high_resolution_clock::now();
     //sort data into list
@@ -73,7 +86,7 @@ int main() {
     //output the duration in nanoseconds
     cout << setw(W3) << durationListSort.count();
     
-    //Set Sort
+    //Sort Set
     //start timing
     auto startSetSort = high_resolution_clock::now();
     //sort data into set
@@ -89,23 +102,66 @@ int main() {
     //INSERT DATA
     cout << setw(W1) << "Insert";
     
+    //Insert Vector
+    //start timing
+    auto startInsertVector = high_resolution_clock::now();
     //insert data into vector
     vectorCodes.insert(vectorCodes.begin() + vectorCodes.size() / 2, "TESTCODE");
+    //end timing
+    auto endInsertVector = high_resolution_clock::now();
+     //calculate duration
+    auto durationInsertVector = duration_cast<nanoseconds>(endInsertVector - startInsertVector);
+    //output the duration in nanoseconds
+    cout << setw(W2) << durationInsertVector.count();
+    
+    //Insert List
+    //start timing
+    auto startInsertList = high_resolution_clock::now();
     //insert data into list
     auto it = listCodes.begin();
     advance(it, listCodes.size() / 2);
     listCodes.insert(it, "TESTCODE");
+    //end timing
+    auto endInsertList = high_resolution_clock::now();
+     //calculate duration
+    auto durationInsertList = duration_cast<nanoseconds>(endInsertList - startInsertList);
+    //output the duration in nanoseconds
+    cout << setw(W3) << durationInsertList.count();
+    
+    //Insert Set
+    //start timing
+    auto startInsertSet = high_resolution_clock::now();
     //insert data into set
     setCodes.insert("TESTCODE");
+    //end timing
+    auto endInsertSet = high_resolution_clock::now();
+     //calculate duration
+    auto durationInsertSet = duration_cast<nanoseconds>(endInsertSet - startInsertSet);
+    //output the duration in nanoseconds
+    cout << setw(W4) << durationInsertSet.count();
     cout << endl;
 
     //DELETE DATA
-    cout << setw(W1) << "Delete";
+    cout << "Delete";
+    
+    //Delete Vector
+    //start timing
+    auto startDeleteVector = high_resolution_clock::now();
     //delete data from vector
     vectorCodes.erase(vectorCodes.begin() + vectorCodes.size() / 2);
+    //end timing
+    auto endDeleteVector = high_resolution_clock::now();
+     //calculate duration
+    auto durationDeleteVector = duration_cast<nanoseconds>(endDeleteVector - startDeleteVector);
+    //output the duration in nanoseconds
+    cout << setw(W4) << durationDeleteVector.count();
+    
+    //Delete List
     //delete data from list
     advance(it, listCodes.size() / 2);
     listCodes.erase(it);
+    
+    //Delete Set
     //delete data from set
     auto it1 = setCodes.begin();
     advance(it1, setCodes.size() / 2);
